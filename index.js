@@ -5,9 +5,16 @@ const app = express()
 
 const caminhoBase = path.join(__dirname, "templates")
 
+app.get('/usuarios/:id', (requisicao, resposta)=> {
+    const id = requisicao.params.id
+
+    console.log(`Robando dados do usuario ${id}`)
+
+    resposta.sendFile(`${caminhoBase}/usuarios.html`)
+})
+
 app.get('/', (requisicao, resposta) => {
-    resposta.send("estou fununciando com expresso")
-    console.log(caminhoBase)
+    resposta.sendFile(`${caminhoBase}/index.html`)
 })
 
 app.listen(3000, () => {
